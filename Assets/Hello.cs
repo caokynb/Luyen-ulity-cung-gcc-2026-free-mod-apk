@@ -1,16 +1,26 @@
+using System;
 using UnityEngine;
-
-public class Hello : MonoBehaviour
+public class Hello
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int hp;
+    private int attack;
+    public Hello(int hp, int attack)
     {
-        
+        this.hp = hp;
+        this.attack = attack;
+    }
+    public Hello Hello1 = new Hello(100,20);
+    public int Tung = 3;
+    void Dec(ref int Tung)
+    {
+        Tung--;
+    }
+    Dec(ref int Tung);
+    Console.WriteLine(Tung);
+    void Dec1(out int tug)
+    {
+        tug = 3;
+        Console.WriteLine(tug);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
