@@ -20,24 +20,23 @@
               "icon": "lucide-file",
               "title": "Buổi 2"
             }
-          }
-        ]
-      },
-      {
-        "id": "48f046edfe59cd80",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "685559896496a898",
+            "id": "fb8383fda5ad7c4e",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Buổi 3.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Buổi 3"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -115,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Buổi 2.md",
+                "file": "Buổi 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Buổi 2.md",
+                "file": "Buổi 3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -177,7 +176,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Buổi 2.md",
+                "file": "Buổi 3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -204,9 +203,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "6d86c73bac968e1e",
+  "active": "fb8383fda5ad7c4e",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Buổi 2.md"
+    "Buổi 2.md",
+    "Buổi 3.md",
+    "Untitled",
+    "Welcome.md"
   ]
 }
