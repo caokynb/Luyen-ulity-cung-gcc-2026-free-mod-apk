@@ -17,6 +17,7 @@
  		    }
  	    }
 	    ```
+	    
 3. Constructor của 1 class.
 	 -  Là một hàm khởi tạo để gán giá trị ban đầu cho các field của 1 class.
 	  ``` Example
@@ -44,6 +45,7 @@
     Dec(ref int a);
     // Sẽ trả về 2 do đã tham chiếu qua ref, nếu không thì chỉ trả về 3 vì đang là tham trị.
 	```
+	
 2. Out
 	- Dùng như 1 cách để khai báo biến tạm ngay trong ô giá trị truyền vào
 	``` Example
@@ -54,3 +56,4 @@
     }
     // Sẽ trả về 3 mà không cần khai báo hẳn biến a!
 	```
+END.
