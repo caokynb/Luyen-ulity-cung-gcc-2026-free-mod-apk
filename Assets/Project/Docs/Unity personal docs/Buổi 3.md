@@ -16,7 +16,7 @@
             else hp = value; 
         }
     }
-}
+	}
 	```
 	- Ngoài ra còn có tính năng **Auto-property** viết tắt: `public int P {get; set;}`
 2. Static 
