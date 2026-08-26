@@ -52,6 +52,6 @@
         a = 3;
         Console.WriteLine(a);
     }
-    // Sẽ trả về 3 mà không cần khai báo hẳn biến a!
+    // Sẽ trả về 3 mà không cần khai báo hẳn biến a
 	```
 END.
