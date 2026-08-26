@@ -9,14 +9,17 @@ public class Hello
         this.hp = hp;
         this.attack = attack;
     }
+
     public Hello Hello1 = new Hello(100,20);
+    
     public int Tung = 3;
+
     void Dec(ref int Tung)
     {
         Tung--;
+        Debug.Log(Tung);
     }
-    Dec(ref int Tung);
-    Console.WriteLine(Tung);
+
     void Dec1(out int tug)
     {
         tug = 3;

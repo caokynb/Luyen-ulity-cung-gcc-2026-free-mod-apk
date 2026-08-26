@@ -81,4 +81,14 @@
 			- `OnDisable()`: Chạy khi script hoặc `GameObject` bị tắt (`SetActive(false)`). Thường dùng để hủy sự kiện Event Listener.
 			- `OnDestroy()`: Chạy khi đối tượng bị xóa khỏi bộ nhớ hoặc khi thoát game. Dùng để... thoát game.
 	- Thứ tự gọi: `Awake -> OnEnable -> Start -> (FixedUpdate -> Update -> LateUpdate)` 
+7. Vector
+8. Time
+	- `Time.deltaTime`: Khoảng cách giữa 2 lần update/2 frame, game càng lag thì deltaTime càng cao, càng mượt thì deltaTime càng thấp.
+	- `Time.fixedDeltaTime`: giống `deltaTime` nhưng theo một interval (0.02s).
+	- `Time.UnscaledDeltaTime`: Là `deltaTime` nhưng không bị ảnh hưởng bởi `timeScale`
+	- `Time.timeScale`: Tick của game
+9. Mathf
+10. Gizmos
+	- 
+11. Transform
 END.
