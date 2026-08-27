@@ -1,5 +1,5 @@
-1. Properties
-	- Là cơ chế để bảo vệ dữ liệu thông qua `get` và `set`. Giúp kiểm soát ai là người xem và thay đổi dữ liệu của class.
+# 1. Properties
+- Là cơ chế để bảo vệ dữ liệu thông qua `get` và `set`. Giúp kiểm soát ai là người xem và thay đổi dữ liệu của class.
 	``` Example
 	class Player
 	{
@@ -16,11 +16,11 @@
             else hp = value; 
         }
     }
-	}
 	```
 	- Ngoài ra còn có tính năng **Auto-property** viết tắt: `public int P {get; set;}`
-2. Static 
-	- Dùng để định nghĩa một biến là một thành phần của chính class đó (không của riêng từng đối tượng nào)
+# 2. Static 
+-  Dùng để định nghĩa một biến là một thành phần của chính class đó (không của riêng từng đối tượng nào)
+	
 	``` Example
 	class GameSettings
 	{
@@ -31,10 +31,10 @@
         Console.WriteLine("Chào mừng đến với GCC Simulator");
 	    }
 	}
-
 	```
-3. Kế thừa (Inheritance)
-	- Khi các class có nhiều điểm chung, có thể gom lại thành các class cha và con kế thừa để tái sử dụng
+	
+# 3. Kế thừa (Inheritance)
+- Khi các class có nhiều điểm chung, có thể gom lại thành các class cha và con kế thừa để tái sử dụng
 	``` Example
 	// Class cha
 	class Character
@@ -50,8 +50,8 @@
 	    // Độ hung dữ riêng của quái mà Character không cần
 	}
 	```
-4. Đa hình
-	- Sử dụng `virtual` và `override` cho phép class con ghi đè (định nghĩa lại) hành vi của class cha.
+# 4. Đa hình
+- Sử dụng `virtual` và `override` cho phép class con ghi đè (định nghĩa lại) hành vi của class cha.
 	``` Example
 	class Hello
 	{
@@ -64,10 +64,10 @@
 	//Chỉ có biến virtual mới được phép bị override
 	```
 	- Ngoài ra còn `abstract` nhưng hơi khó hiểu với em ạ.
-5. Destructor
+# 5. Destructor
 	....
-6. [MonoBehaviour](https://docs.unity3d.com/6000.5/Documentation/ScriptReference/MonoBehaviour.html)
-	- Là một class cơ sở mà mọi script đều phải kế thừa để có thể gắn vào các `GameObject` trong Unity (Nếu muốn).
+# 6. [MonoBehaviour](https://docs.unity3d.com/6000.5/Documentation/ScriptReference/MonoBehaviour.html)
+- Là một class cơ sở mà mọi script đều phải kế thừa để có thể gắn vào các `GameObject` trong Unity (Nếu muốn).
 	- Nó sẽ có vòng đời (Order of execution) là tập hợp những các `Methods` được Unity tự động gọi theo một trình tự thời gian xác định từ lúc một `Object` được sinh ra cho đến khi hủy.
 		1.  Nhóm khởi tạo (Chỉ chạy một lần duy nhất trong vòng đời)
 			- `Awake()`: Chạy khi script instance được tải kể cả khi `GameObject` bị tắt. Dùng để khởi tạo các biến nội bộ, gán các tham chiếu giữa các component trên cùng 1 `Object` 
