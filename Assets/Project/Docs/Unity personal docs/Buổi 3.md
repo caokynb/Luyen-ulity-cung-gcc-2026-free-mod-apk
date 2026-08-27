@@ -80,15 +80,50 @@
 		3. Nhóm kết thúc (Khi tắt game hoặc hủy `Object`)
 			- `OnDisable()`: Chạy khi script hoặc `GameObject` bị tắt (`SetActive(false)`). Thường dùng để hủy sự kiện Event Listener.
 			- `OnDestroy()`: Chạy khi đối tượng bị xóa khỏi bộ nhớ hoặc khi thoát game. Dùng để... thoát game.
-	- Thứ tự gọi: `Awake -> OnEnable -> Start -> (FixedUpdate -> Update -> LateUpdate)` 
-7. Vector
-8. Time
-	- `Time.deltaTime`: Khoảng cách giữa 2 lần update/2 frame, game càng lag thì deltaTime càng cao, càng mượt thì deltaTime càng thấp.
-	- `Time.fixedDeltaTime`: giống `deltaTime` nhưng theo một interval (0.02s).
-	- `Time.UnscaledDeltaTime`: Là `deltaTime` nhưng không bị ảnh hưởng bởi `timeScale`
-	- `Time.timeScale`: Tick của game
-9. Mathf
-10. Gizmos
-	- 
-11. Transform
+	- Thứ tự gọi: `Awake -> OnEnable -> Start -> (FixedUpdate -> Update -> LateUpdate)`
+# 7. Vector
+- `Vector2`: Dùng cho không gian 2D, gồm 2 thành phần x (hoành độ) và y (tung độ).
+- `Vector3`: Dùng cho không gian 3D, gồm 3 thành phần là x và y của `Vector2` và trục z (Rotation của 2D). Trục z vẫn có thể được dùng cho game 2D và hành động như việc xoay `GameObject`.
+- Vận tốc và hướng đi của `GameObject`: 
+	``` Example
+	// Di chuyển nhân vật sang phải mỗi frame (trong hàm Update)
+	 transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
+	```
+- Các hướng Vector có sẵn trong Unity:
+		- `Vector3.zero` -> `(0, 0, 0)`
+		- `Vector3.one` ->`(1, 1, 1)`
+		- `Vector3.up` ->`(0, 1, 0)`
+		- `Vector3.down` -> `(0, -1, 0)`
+		- `Vector3.right` -> `(1, 0, 0)`
+		- `Vector3.left` ->`(-1, 0, 0)` 
+		- `Vector3.forward` -> `(0, 0, 1)`
+		- `Vector3.back` -> `(0, 0, -1)`
+- Các phép toán với Vector trong Unity:
+	- `Vector3.Distance(position 1, position 2)`: Tính khoảng cách giữa 2 `Object`.
+	- `.normalized`: Dùng để chuẩn hóa Vector thành 1 Vector hướng (Vector đơn vị). `Vector3 direction = direction.normalized`.
+	- `Vector3.Lerp(position 1, position 2, float tỉ lệ)`: Dùng để làm mượt chuyển động. Chuyển động từ position 1 -> position 2 với khoảng cách là `tỉ lệ`, tức là sẽ di chuyển được `tỉ lệ`% quãng đường khi được gọi, khi được dùng trong hàm `Update()` và được nhân với `deltaTime` thì sẽ tạo được hiệu ứng chuyển động mượt.
+# 8. Time
+- `Time.deltaTime`: Khoảng cách giữa 2 lần update/2 frame, game càng lag thì deltaTime càng cao, càng mượt thì deltaTime càng thấp.
+- `Time.fixedDeltaTime`: giống `deltaTime` nhưng theo một interval (0.02s).
+- `Time.UnscaledDeltaTime`: Là `deltaTime` nhưng không bị ảnh hưởng bởi `timeScale`
+- `Time.timeScale`: Tick / Tốc độ của game.
+# 9. Mathf
+- Là một `static class` có sẵn trong Unity. Được dùng để xử lí logic game.
+	- `Mathf.Clamp(value, minVal, maxVal`: Giới hạn cho 1 biến không vượt mức ~~Pickleball~~ cho phép (Máu không được âm, v.v)
+	- `Mathf.Round(value)`: Làm tròn 1 số tới giá trị gần nhất
+	- `Mathf.Floor(value)`: Làm tròn xuống 1 số.
+	- `Mathf.Ceil(value)`: Làm tròn lên 1 số.
+	- `Mathf.Abs`: Giá trị tuyệt đối.
+	- `Mathf.Min`: So sánh 2 giá trị và lấy giá trị nhỏ hơn.
+	- `Mathf.Max`: So sánh 2 giá trị và lấy giá trị lớn hơn.
+	- `Mathf.Sin/Cos/Tan`: Dùng để tính toán quỹ đạo (ví dụ: Item bị rơi trong Minecraft).
+# 10. Gizmos
+- Là công cụ dùng để vẽ trong Unity, chỉ có thể được hiển thị ở trong scene view bằng cách bật Gizmos lên.
+- Để vẽ được thì dùng thông qua 2 hàm callback trong `MonoBehaviour`:
+	- `OnDrawGizmos()`: Được gọi bởi Unity ở mỗi frame không điều kiện.
+	- `OnDrawGizmosSelected()`: Chỉ được chạy khi chọn đúng `GameObject` có chứa script chứa Gizmos.
+- Cách để vẽ cơ bản:
+	- `Gizmos.color`: Chỉnh màu của Gizmos được tạo.
+	- `Gizmos.DrawLine/Cube/WireCube/...`: Vẽ đủ các loại hình..
+# 11. Transform
 END.
