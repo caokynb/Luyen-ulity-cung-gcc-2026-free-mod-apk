@@ -1,11 +1,27 @@
-# Input System mới
-# Physics 2D
-- Va chạm + điều kiện xảy ra
-- Rigidbody2D
-	- Dynamic
-	- Kinematic
-	- Static
-- Trigger
-- Raycast 2D
-- Layer Mask
-- Các cách di chuyển nhân vật
+## 1. Input System mới 
+- Hệ thống nhận input hiện đại của Unity (thay thế Input Manager cũ), giúp quản lý phím bấm, chuột, gamepad linh hoạt hơn thông qua các Action Assets, Action Maps và component `Player Input`. 
+	- Cấu trúc chính gồm:
+		- `Input Action Asset`: File cấu hình chứa các hành động của game.
+		- `Action Maps`: Nhóm các hành động theo ngữ cảnh (Ở gameplay, lúc dừng game, ở menu,...)
+		- `Player Input Component`: Gắn trực tiếp lên GameObject của nhân vật để tự động nhận sự kiện từ phím bấm.
+- **Các cách di chuyển nhân vật dùng Input System**: 
+	- **Cách 1: Thay đổi qua `Transform` (`transform.Translate` hoặc cộng `position`)**: Dịch chuyển trực tiếp tọa độ. Dễ làm nhưng xuyên tường, phù hợp game Top-down / Puzzle. 
+	- **Cách 2: Thay đổi vận tốc vật lý (`Rigidbody2D.velocity`)**: Gán trực tiếp giá trị input nhân với tốc độ vào `rb.velocity` trong `FixedUpdate`. Thường dùng cho game Platformer vì vẫn giữ được va chạm vật lý. 
+	- **Cách 3: Tác động lực tức thời (`Rigidbody2D.AddForce`)**: Dùng cho hành động nhảy (`Jump`), lướt (`Dash`) bằng cách bồi một lực đẩy bộc phát.
+## 2. Physics 2D 
+- **Va chạm + điều kiện xảy ra**:
+- Để xảy ra va chạm vật lý (Collision), cả hai đối tượng bắt buộc phải có **Collider 2D** (ví dụ: BoxCollider2D, CircleCollider2D). 
+- Ít nhất một trong hai đối tượng phải có **Rigidbody 2D**. 
+	- **Rigidbody2D**: Component quản lý các thuộc tính vật lý của đối tượng 2D. Gồm 3 Body Type chính: 
+		- `Dynamic`: Chịu ảnh hưởng hoàn toàn bởi lực, trọng lực và va chạm. Dùng cho nhân vật chính, kẻ địch, vật thể rơi.
+		- `Kinematic`: Di chuyển chủ động bằng code (thông qua velocity hoặc transform), không bị ảnh hưởng bởi trọng lực hay lực đẩy từ bên ngoài, nhưng có thể đẩy các vật Dynamic khác. 
+		- `Static`: Đứng yên tuyệt đối, không di chuyển. Dùng cho mặt đất, tường, chướng ngại vật cố định. 
+- **Trigger**: 
+	- Vùng kích hoạt (được tích chọn `Is Trigger` trong Collider). 
+	- Không tạo ra va chạm cứng (vật thể đi xuyên qua nhau), nhưng dùng để phát hiện xem có đối tượng đi vào vùng đó hay không thông qua các hàm như `OnTriggerEnter2D`. Thường dùng cho nhặt item, cổng dịch chuyển, vùng check sự kiện. 
+- **Raycast 2D**: 
+	- Bắn một "tia" vô hình từ một điểm theo một hướng nhất định để kiểm tra xem có va chạm với Collider nào trên đường đi hay không. 
+	- Rất hay dùng để làm tính năng kiểm tra chạm đất (Ground Check) cho nhân vật nhảy, hoặc tầm nhìn quái vật. 
+- **Layer Mask**: 
+	- Cơ chế gán các `GameObject` vào các "lớp" (layer) riêng biệt. 
+	- Giúp bộ lọc (như Raycast) biết chính xác nó nên quét va chạm với layer nào và bỏ qua layer nào để tối ưu hiệu năng và tránh va chạm nhầm. 

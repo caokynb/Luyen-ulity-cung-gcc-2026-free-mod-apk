@@ -109,10 +109,10 @@
 - `Time.timeScale`: Tick / Tốc độ của game.
 # 9. Mathf
 - Là một `static class` có sẵn trong Unity. Được dùng để xử lí logic game.
-	- `Mathf.Clamp(value, minVal, maxVal`: Giới hạn cho 1 biến không vượt mức ~~Pickleball~~ cho phép (Máu không được âm, v.v)
-	- `Mathf.Round(value)`: Làm tròn 1 số tới giá trị gần nhất
-	- `Mathf.Floor(value)`: Làm tròn xuống 1 số.
-	- `Mathf.Ceil(value)`: Làm tròn lên 1 số.
+	- `Mathf.Clamp`: Giới hạn cho 1 biến không vượt mức ~~Pickleball~~ cho phép (Máu không được âm, v.v)
+	- `Mathf.Round`: Làm tròn 1 số tới giá trị gần nhất
+	- `Mathf.Floor`: Làm tròn xuống 1 số.
+	- `Mathf.Ceil`: Làm tròn lên 1 số.
 	- `Mathf.Abs`: Giá trị tuyệt đối.
 	- `Mathf.Min`: So sánh 2 giá trị và lấy giá trị nhỏ hơn.
 	- `Mathf.Max`: So sánh 2 giá trị và lấy giá trị lớn hơn.
@@ -126,4 +126,17 @@
 	- `Gizmos.color`: Chỉnh màu của Gizmos được tạo.
 	- `Gizmos.DrawLine/Cube/WireCube/...`: Vẽ đủ các loại hình..
 # 11. Transform
+- Là 1 component bắt buộc phải có trong mỗi `GameObject`.
+- Dùng để xác định vị trí, di chuyển, xoay `GameObject`:
+	- `transform.position`: Vị trí / Tọa độ của `GameObject` trong không gian game.
+	- `transform.rotation`: Góc quay của `GameObject` dưới dạng Quaternion
+	- `transform.localScale`: Kích thước tỉ lệ của `GameObject` theo trục `x;y;z`.
+- Unity phân biệt hai hệ tọa độ riêng: `position` và `localPosition`.
+	- `position`: Là tọa độ theo toàn không gian thế giới.
+	- `localPosition`: Là tọa độ tương đối so với Parent của nó.
+- Các hàm thao tác với Transform thường dùng: 
+	- `transform.Translate: Dịch chuyển `GameObject` theo một hướng và một khoảng cách xác định. 
+	- `transform.Rotate: Xoay `GameObject` theo các góc quay cho trước.
+	- `transform.LookAt: Tự động xoay mặt/hướng của `GameObject` nhìn thẳng về phía một đối tượng hoặc vị trí mục tiêu. 
+	- `transform.SetParent`: Thay đổi hoặc gán quan hệ cha - con cho `GameObject` (dùng khi nhặt item vào inventory hoặc thả ra).
 END.
