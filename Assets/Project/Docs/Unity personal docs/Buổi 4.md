@@ -8,6 +8,12 @@
 	- **Cách 1: Thay đổi qua `Transform` (`transform.Translate` hoặc cộng `position`)**: Dịch chuyển trực tiếp tọa độ. Dễ làm nhưng xuyên tường, phù hợp game Top-down / Puzzle. 
 	- **Cách 2: Thay đổi vận tốc vật lý (`Rigidbody2D.velocity`)**: Gán trực tiếp giá trị input nhân với tốc độ vào `rb.velocity` trong `FixedUpdate`. Thường dùng cho game Platformer vì vẫn giữ được va chạm vật lý. 
 	- **Cách 3: Tác động lực tức thời (`Rigidbody2D.AddForce`)**: Dùng cho hành động nhảy (`Jump`), lướt (`Dash`) bằng cách bồi một lực đẩy bộc phát.
+- ReadValue:
+	- Trả về value/button để ref trong code.
+- Action Types:
+	- Button: trả về nút đã bấm.
+	- Value: Trả về giá trị tương ứng.
+	- Pass through: chịu.
 ## 2. Physics 2D 
 - **Va chạm + điều kiện xảy ra**:
 - Để xảy ra va chạm vật lý (Collision), cả hai đối tượng bắt buộc phải có **Collider 2D** (ví dụ: BoxCollider2D, CircleCollider2D). 
