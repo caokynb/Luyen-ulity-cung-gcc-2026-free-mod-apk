@@ -8,6 +8,7 @@
 	- **Cách 1: Thay đổi qua `Transform` (`transform.Translate` hoặc cộng `position`)**: Dịch chuyển trực tiếp tọa độ. Dễ làm nhưng xuyên tường, phù hợp game Top-down / Puzzle. 
 	- **Cách 2: Thay đổi vận tốc vật lý (`Rigidbody2D.velocity`)**: Gán trực tiếp giá trị input nhân với tốc độ vào `rb.velocity` trong `FixedUpdate`. Thường dùng cho game Platformer vì vẫn giữ được va chạm vật lý. 
 	- **Cách 3: Tác động lực tức thời (`Rigidbody2D.AddForce`)**: Dùng cho hành động nhảy (`Jump`), lướt (`Dash`) bằng cách bồi một lực đẩy bộc phát.
+	- **Cách 4: Thay đổi trực tiếp lên linearVelocity.** 
 - ReadValue:
 	- Trả về value/button để ref trong code.
 - Action Types:
@@ -17,11 +18,35 @@
 ## 2. Physics 2D 
 - **Va chạm + điều kiện xảy ra**:
 - Để xảy ra va chạm vật lý (Collision), cả hai đối tượng bắt buộc phải có **Collider 2D** (ví dụ: BoxCollider2D, CircleCollider2D). 
+	- `Collider 2D`:
+		- Là 1 component để thêm "Hitbox" cho `GameObject`
+		- Các hàm có sẵn với Collider 2D:
+			- `OnCollisionEnter2D(Collision2D)`: Được gọi vào frame đầu tiên khi 2 collider va chạm với nhau.
+			- `OnCollisionStay2D(Collision2D)`: Được gọi mỗi `FixedUpdate` với điều kiện là 2 collider đang chạm nhau trong frame đó.
+			- `OnCollisionExit2D(Collision2D)`: Được gọi ở frame đầu tiên khi 2 Collider tách nhau ra.
+		- `Is Trigger`: Là một checkbox trong option của Collider, tick checkbox này thay đổi từ solid sang dạng một khu vực có thể đi xuyên qua và có thể được gọi thông qua các hàm sự kiện bao gồm (Điều kiện ít nhất 1 `GameObject` phải có RigidBody2D và 1 Collider2D có tick `Is Trigger`):
+			- `OnTriggerEnter2D`: Hàm sự kiện có sẵn trong Unity dùng để phát hiện khi có một Collider khác đi qua vùng trigger mà không gây ra va chạm với nó.
+			- `OnTriggerStay2D`: Hàm sự kiện có sẵn trong Unity, chạy theo mỗi `FixedUpdate` với mỗi collider khác mà đang ở trong vùng Trigger.
+			- `OnTriggerExit2D`: Ngược lại với `OnTriggerStay2D`, được gọi khi collider khác đi ra vùng Trigger.
 - Ít nhất một trong hai đối tượng phải có **Rigidbody 2D**. 
 	- **Rigidbody2D**: Component quản lý các thuộc tính vật lý của đối tượng 2D. Gồm 3 Body Type chính: 
 		- `Dynamic`: Chịu ảnh hưởng hoàn toàn bởi lực, trọng lực và va chạm. Dùng cho nhân vật chính, kẻ địch, vật thể rơi.
 		- `Kinematic`: Di chuyển chủ động bằng code (thông qua velocity hoặc transform), không bị ảnh hưởng bởi trọng lực hay lực đẩy từ bên ngoài, nhưng có thể đẩy các vật Dynamic khác. 
 		- `Static`: Đứng yên tuyệt đối, không di chuyển. Dùng cho mặt đất, tường, chướng ngại vật cố định. 
+		- `Collision detection`:
+			- Discrete: Check va chạm theo `Time.fixedDeltaTime`, tiết kiệm nhất nhưng nếu `Object` đi nhanh quá có thể gây ra hiện tượng xuyên tường.
+			- Continuous: Check va chạm theo mọi frame, tốn nhất nhưng hiện đại máy mạnh nên không quan trọng.
+		- `Sleeping mode`:
+			- Start Awake: `GameObject` sẽ được hoạt động khi scene bắt đầu, được ngủ khi không có gì va chạm sau 1 khoảng thời gian.
+			- Start Asleep: `GameObject` sẽ ngủ khi scene bắt đầu, được đánh thức khi có va chạm xảy ra, cũng được tự động ngủ sau khoảng thời gian.
+			- Never Sleep: `GameObject` luôn hoạt động, không tự động tắt.
+			- Các hàm với sleep:
+				- `rb.IsSleeping()`: Có đang ngủ hay không.
+				- `rb.WakeUp()`: Đánh thức `GameObject`.
+		- `Interpolate`/ Nội suy:
+			- None: Tắt interpolation, `Object` không có smoothing khi di chuyển.
+			- Interpolate: Làm mượt chuyển động dựa trên frame trước đó của `Object`.
+			- Extrapolate: Làm mượt chuyển động dựa trên suy đoán về chuyển động của `Object` ở frame sau đó (Hope that makes sense :3).
 - **Trigger**: 
 	- Vùng kích hoạt (được tích chọn `Is Trigger` trong Collider). 
 	- Không tạo ra va chạm cứng (vật thể đi xuyên qua nhau), nhưng dùng để phát hiện xem có đối tượng đi vào vùng đó hay không thông qua các hàm như `OnTriggerEnter2D`. Thường dùng cho nhặt item, cổng dịch chuyển, vùng check sự kiện. 
