@@ -7,10 +7,14 @@ public class Coin : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CoinManager.collectedCoins+=1;
-            Debug.Log($"Đã nhặt 1 xu!, hiện tại có {CoinManager.collectedCoins} xu!");
-            //Instantiate(coinPrefab,transform.position,Quaternion.identity);
-            Destroy(this.gameObject);
+            UpdateCoin(1);
         }
+    }
+    void UpdateCoin(int n)
+    {
+        CoinManager.collectedCoins+=n;
+        Debug.Log($"Đã nhặt 1 xu!, hiện tại có {CoinManager.collectedCoins} xu!");
+        //Instantiate(coinPrefab,transform.position,Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
