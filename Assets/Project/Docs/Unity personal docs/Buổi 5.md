@@ -35,7 +35,7 @@ void CheckRay()
     Debug.DrawRay(rayOrigin,rayDir*5,Color.red); // Vẽ một ray Debug có thể thấy được
     }
 ```
-- Ray cũng có collider riêng của nó:
+- RaycastHit2D là struct nên cũng có biến collider riêng của nó:
 ``` Example
 	RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, dist); //Vẽ một ray
     Debug.DrawRay(rayOrigin,rayDir*5,Color.red); // Vẽ một ray Debug có thể thấy được

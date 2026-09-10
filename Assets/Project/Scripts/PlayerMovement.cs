@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance=1f;
+    public float boxSizeX=1f;
+    public float boxSizeY=1f;
+    public float castDist=1f;
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
@@ -45,8 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
     void JumpCheck()
     {
-        RaycastHit2D touched = Physics2D.Raycast(transform.position,Vector2.down,groundCheckDistance,groundLayer);
-        Debug.DrawRay(transform.position,Vector2.down*groundCheckDistance,Color.red);
+        //RaycastHit2D touched = Physics2D.Raycast(transform.position,Vector2.down,groundCheckDistance,groundLayer);
+        //Debug.DrawRay(transform.position,Vector2.down*groundCheckDistance,Color.red);
+        RaycastHit2D touched = Physics2D.BoxCast(transform.position - new Vector3(0,boxSizeY-1,0),new Vector2(boxSizeX,boxSizeY),0f,Vector2.zero,castDist,groundLayer);
         if(JumpAction.ReadValue<float>() != 0 && touched.collider!=null) rb.linearVelocityY = jumpForce;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position - new Vector3(0,boxSizeY-1,0), new Vector2(boxSizeX,boxSizeY));
     }
 }

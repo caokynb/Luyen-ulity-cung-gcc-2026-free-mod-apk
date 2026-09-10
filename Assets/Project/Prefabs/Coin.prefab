@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec96d6c9029533942a289a358dbc2ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
+  coinPrefab: {fileID: 7215325661418459133}
 --- !u!50 &6820464641783952877
 Rigidbody2D:
   serializedVersion: 5
