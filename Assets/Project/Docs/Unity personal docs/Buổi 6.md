@@ -124,6 +124,64 @@ void Start()
 		    Debug.Log("Đã phát âm thanh!");
 		}
 		```
+## 2. Coroutine
+- Thay vì chạy tất cả các lệnh trong 1 frame như `Update()` thì Coroutine có thể chia nhỏ từng tác vụ ra lần lượt từng frame.
+- Chia các tác vụ ra bằng `yield return`.
+- Chạy hết trên luồng chính, không chia luồng.
+- Cách dùng `yield return WaitForSeconds:
+``` Dùng yield return WaitForSeconds
+public class PlayerDash : MonoBehaviour
+{
+    private bool canDash = true;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            Dash();
+            // Bắt đầu đếm ngược thời gian hồi chiêu
+            StartCoroutine(DashCooldownRoutine());
+        }
+    }
+
+    void Dash()
+    {
+        Debug.Log("Nướt!");
+    }
+	
+	// Khởi tạo 1 hàm Coroutine
+    IEnumerator DashCooldownRoutine()
+    {
+        canDash = false; // tắt lướt
+        Debug.Log("Đang hồi chiêu");
+
+        // Tạm dừng đoạn code này trong 1 giây (game vẫn chơi bình thường)
+        yield return new WaitForSeconds(1f);
+
+        canDash = true; // hết cooldown lướt
+        Debug.Log("Đã hồi chiêu xong!");
+    }
+}
+```
+- Dùng `yield return null`
+``` c
+public class SimpleYield : MonoBehaviour
+{
+    void Start()
+    {
+        StartCoroutine(TestYieldNull());
+    }
+
+    IEnumerator TestYieldNull()
+    {
+        Debug.Log("Dòng này chạy ở Frame thứ 1.");
+		// cơ bản là return null ném cái dòng tiếp theo vào frame sau thay vì đợi bao nhiêu giây.
+        yield return null; 
+
+        Debug.Log("Dòng này chạy ở Frame thứ 2.");
+    }
+}
+```
 
 
 
