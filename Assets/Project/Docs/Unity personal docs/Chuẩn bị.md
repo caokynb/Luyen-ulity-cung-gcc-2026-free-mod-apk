@@ -26,8 +26,8 @@
 --- 
 ## 4. Yêu cầu bài tập mới (Game Task) Áp dụng ***Event*** và ***Coroutine*** vào Gameplay: 
 * ***Khi Player bắn:*** 
-* Bắn ra một Event thông báo. 
-* UI (hoặc Log) hiển thị số lượng đạn giảm đi 1. 
-* Người chơi bị đẩy lùi một đoạn (Knockback / giật khi bắn). 
+* Bắn ra một Event thông báo.  DONE
+* UI (hoặc Log) hiển thị số lượng đạn giảm đi 1. DONE
+* Người chơi bị đẩy lùi một đoạn (Knockback / giật khi bắn).  DONE
 * ***Nhiệm vụ tùy chọn (Optional):*** 
 * Hoàn thiện hiệu ứng hiển thị: Sau 1 khoảng thời gian thì ẩn đi (sử dụng Coroutine để đếm thời gian trễ).

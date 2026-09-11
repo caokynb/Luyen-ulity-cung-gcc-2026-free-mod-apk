@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,26 +9,21 @@ public class PlayerMovement : MonoBehaviour
     public InputActionAsset InputActions;
     private InputAction MoveAction;   
     private InputAction JumpAction;
-    private InputAction AttackAction;
     public float walkSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance=1f;
     public float boxSizeX=1f;
     public float boxSizeY=1f;
     public float castDist=1f;
+    private bool isRecoiled=false;
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
-    }
-    private void OnDisable()
-    {
-      //  InputActions.FindActionMap("Player").Disable();
     }
     private void Awake()
     {
         MoveAction = InputSystem.actions.FindAction("Move");
         JumpAction = InputSystem.actions.FindAction("Jump");
-        AttackAction = InputSystem.actions.FindAction("Attack");
     }
     void Start()
     {
@@ -42,18 +38,35 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {   
         JumpCheck();
+        Flip();
+        if(isRecoiled) return;
         rb.linearVelocityX = walkSpeed * MoveAction.ReadValue<float>();
-        if(AttackAction.WasPressedThisFrame()) Debug.Log("Tấn công");
     }
 
     void JumpCheck()
     {
-        //RaycastHit2D touched = Physics2D.Raycast(transform.position,Vector2.down,groundCheckDistance,groundLayer);
-        //Debug.DrawRay(transform.position,Vector2.down*groundCheckDistance,Color.red);
         RaycastHit2D touched = Physics2D.BoxCast(transform.position - new Vector3(0,boxSizeY-1,0),new Vector2(boxSizeX,boxSizeY),0f,Vector2.zero,castDist,groundLayer);
         if(JumpAction.ReadValue<float>() != 0 && touched.collider!=null) rb.linearVelocityY = jumpForce;
     }
+    public void Recoil()
+    {
+        StartCoroutine(RecoilRoutine());
+    }
 
+    void Flip()
+    {
+        Vector3 currentDir=transform.localScale;
+        if(MoveAction.ReadValue<float>()>0) currentDir.x=1;
+        else if(MoveAction.ReadValue<float>()<0) currentDir.x=-1;
+        transform.localScale=currentDir;
+    }
+    private IEnumerator RecoilRoutine()
+    {
+        isRecoiled = true;
+        rb.linearVelocityX = -Mathf.Sign(transform.localScale.x)*PlayerShoot.shootRecoil;
+        yield return new WaitForSeconds(0.15f);
+        isRecoiled = false;
+    }
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - new Vector3(0,boxSizeY-1,0), new Vector2(boxSizeX,boxSizeY));

@@ -17,13 +17,7 @@ public class CoinManager : MonoBehaviour
     }
     public void DepleteCoin()
     {
-        if(collectedCoins>0){
-            collectedCoins-=1;
-            Debug.Log($"Đã từ thiện cho Độ Mixi! hiện tại còn {collectedCoins} xu!");
-        } 
-        else
-        {
-            Debug.Log("Hổng còn xu nào!");
-        }
+        collectedCoins+=8;
+        Debug.Log($"Đã nạp thêm xu! hiện tại còn {collectedCoins} xu!");
     }
 }
