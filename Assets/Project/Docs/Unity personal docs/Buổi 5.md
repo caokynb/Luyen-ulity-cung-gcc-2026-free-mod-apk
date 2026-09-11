@@ -6,7 +6,7 @@
 	- Khoảng cách: Chiều dài của tia được bắn ra.
 	- LayerMask (tùy chọn): Giúp lọc ra các lớp chỉ nhận riêng đối với tia (VD. chỉ quét layer này thay vì quét tất cả mọi thứ có Collider).
 - Cách tạo một Raycast:
-	``` Example
+	``` c
 	private Vector2 rayOrigin; //Bắt đầu
     private Vector2 rayDir = Vector2.up; // Hướng
     private float dist=5; //Khoảng cách
@@ -28,7 +28,7 @@
 		- Hướng / Độ dài.
 		- Color / Màu.
 		- Duration (OVERLOAD).
-``` Example
+``` c
 void CheckRay()
 {
 	RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, dist, targetLayer); //Vẽ một ray
@@ -36,7 +36,7 @@ void CheckRay()
     }
 ```
 - RaycastHit2D là struct nên cũng có biến collider riêng của nó:
-``` Example
+``` c
 	RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, dist); //Vẽ một ray
     Debug.DrawRay(rayOrigin,rayDir*5,Color.red); // Vẽ một ray Debug có thể thấy được
     if (hit.collider != null)
@@ -58,7 +58,7 @@ void CheckRay()
 	- `LayerMask.GetMask("TênLayer")`: Lấy trực tiếp LayerMask từ tên (có thể truyền nhiều tên layer cách nhau bởi dấu phẩy). 
 	- `LayerMask.NameToLayer("TênLayer")`: Lấy chỉ số (index) của layer thông qua tên rồi dịch bit để tạo ra LayerMask. ``` 
 - Cách dùng:
-``` Example
+``` c
 [SerializeField] private LayerMask targetLayer; //chọn layer trong inspector luôn  void Start()
 { 
 	targetLayer = LayerMask.GetMask("Ground"); // Hoặc có thể gọi hẳn tên ra

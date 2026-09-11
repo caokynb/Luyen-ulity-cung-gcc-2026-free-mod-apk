@@ -8,7 +8,7 @@
 		- Có tham số truyền vào: Thông báo kèm với tham số.
 		- Không có tham số truyền vào: Chỉ có thông báo mà không có tham số.
 	- Cách sử dụng:
-	``` Example
+	``` c
 	public class CoinManager : MonoBehaviour
 	{
 		// Khai báo Action không có tham số truyền vào
@@ -25,7 +25,7 @@
 	}
 	```
 
-``` Example
+``` c
 // Nhận thông báo từ script trên
 public class Coin : MonoBehaviour
 {
@@ -55,7 +55,7 @@ public class Coin : MonoBehaviour
 	- Nó định nghĩa một `Method` phải có cấu trúc như nào thì mới được lưu trong nó (nhận bao nhiêu tham số,  trả về kiểu dữ liệu gì.
 	- Delegate chỉ là nền tảng cốt lõi của `Action` và `Func` , đừng có dùng...
 	- Cách dùng:
-``` Example
+``` c
 // Khai báo một delegate
 public delegate void OnMathOperate(int a,int b);
 // Chỉ nhận những hàm mà truyền vào 2 tham số và trả về void
@@ -95,7 +95,7 @@ void Start()
 	- Thay vì phải tự thêm vào hàng thì chỉ cần kéo một `GameObject` và chọn hàm cần chạy ngay trong Inspector
 	- Cách sử dụng (3 bước):
 		1. Khai báo và cấu hình trên Inspector.
-		```
+		``` c
 		public int InteractableObject : MonoBehaviour 
 		{ 
 			// Tạo một UnityEvent hiển thị trên Inspector 
@@ -112,7 +112,7 @@ void Start()
 		2. Kéo vào Inspector.
 			- Kéo script vào `GameObject` , sẽ xuất hiện mục là `On Interact` có thể kéo thêm bất kì `GameObject` khác vào.
 		3. Đăng ký qua code (Optional).
-		``` Example
+		``` c
 		void Start()
 		{
 		    // Đăng ký hàm PlaySound thông qua code
@@ -182,7 +182,34 @@ public class SimpleYield : MonoBehaviour
     }
 }
 ```
+- Cách bắt đầu một Coroutine :
+``` c
+// Gọi hẳn hàm Coroutine
+void Start()
+{
+    // Bắt đầu coroutine và có thể truyền tham số
+    StartCoroutine(SpawnEnemyRoutine(5)); 
+}
 
+IEnumerator SpawnEnemyRoutine(int amount)
+{
+    yield return new WaitForSeconds(2f);
+    Debug.Log($"Đã sinh ra {amount} quái vật!");
+}
+```
+- Cách khác:
+``` c
+void Start()
+{
+    // Gọi bằng tên của hàm
+    StartCoroutine("SpawnEnemyRoutine", 5); 
+}
+```
+- Khi Coroutine kết thúc thì nó sẽ tự dừng, còn nếu muốn ngắt nó thì có thể dùng:
+	- `yield break;`
+	- `StopCoroutine(myRoutine);`: Cần phải lưu coroutine vào một biến `private Coroutine myRoutine;`.
+	- `StopCoroutine("SpawnEnemyRoutine")`: Nếu start cũng gọi theo tên thì mới dừng được theo kiểu này.
+	- `StopAllCoroutine()`: Dừng tất cả coroutine đang chạy trên script.
 
 
 
