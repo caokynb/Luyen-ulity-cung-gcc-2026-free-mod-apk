@@ -8,9 +8,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "14cf7206-ef55-40ea-a1af-ac7233e24105",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true,
@@ -30,6 +30,16 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "56aba720-97dd-499a-afe5-36dd9d1f482f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "DepleteCoin",
+                    "type": "Button",
+                    "id": "e0a40bf2-47e4-44b4-bcf9-24b870434266",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -90,6 +100,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6eaa7a35-212e-422f-86af-3c9a730f962d",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DepleteCoin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

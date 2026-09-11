@@ -309,8 +309,8 @@ Transform:
   m_GameObject: {fileID: 245339067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.49, y: -4.29, z: 0}
-  m_LocalScale: {x: 6.033169, y: 3.070186, z: 1}
+  m_LocalPosition: {x: -5.49, y: -4.6276, z: 0}
+  m_LocalScale: {x: 6.033169, y: 2.3947449, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -793,6 +793,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &645037923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645037924}
+  m_Layer: 0
+  m_Name: ActionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645037924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645037923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52502, y: -4.25439, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1309,7 +1340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1644203494
 SpriteRenderer:
   serializedVersion: 3
@@ -1399,7 +1430,8 @@ GameObject:
   - component: {fileID: 2044150999}
   - component: {fileID: 2044150996}
   - component: {fileID: 2044150997}
-  - component: {fileID: 2044150998}
+  - component: {fileID: 2044151000}
+  - component: {fileID: 2044151001}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1521,7 +1553,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 50ea1e0cb5bf06944b7fb3c2d71ced0b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1578,18 +1610,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2044150998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044150991}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e038b3573e3f1847a74c45b89d2f288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rayTest
 --- !u!114 &2044150999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,6 +1622,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb98240b4a7fe548bd368eb223ac46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinManager
+--- !u!114 &2044151000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044150991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d43014094e8e44a927c9178d641331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinUI
+--- !u!114 &2044151001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044150991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06efc5e69aa5b8e4197ded4269ffe007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAction
+  InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  coinDepleteAction:
+    m_Name: Coin Deplete
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 299bd497-10de-4706-830b-a821e814fd0c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+    m_Priority: 0
+  coinDeplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2044150999}
+        m_TargetAssemblyTypeName: CoinManager, Assembly-CSharp
+        m_MethodName: DepleteCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2129158372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,3 +1894,4 @@ SceneRoots:
   - {fileID: 1329714876}
   - {fileID: 458506476}
   - {fileID: 1405122033}
+  - {fileID: 645037924}
