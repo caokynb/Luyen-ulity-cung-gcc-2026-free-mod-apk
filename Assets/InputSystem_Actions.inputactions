@@ -45,6 +45,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "SwapPlayer",
+                    "type": "Button",
+                    "id": "36059a04-9da1-46bc-b69d-ff6a0c343851",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -111,6 +121,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DepleteCoin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2799dda9-ee33-45fc-81ae-a384c4be6f5b",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

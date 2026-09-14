@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public InputActionAsset InputActions;
     private InputAction MoveAction;   
     private InputAction JumpAction;
+    private InputAction SwapAction;
     public float walkSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance=1f;
@@ -24,17 +27,8 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveAction = InputSystem.actions.FindAction("Move");
         JumpAction = InputSystem.actions.FindAction("Jump");
+        SwapAction = InputSystem.actions.FindAction("SwapPlayer");
     }
-    void Start()
-    {
-        
-    }
-    void FixedUpdate()
-    {
-        
-        
-    }
-
     void Update()
     {   
         JumpCheck();
@@ -70,5 +64,10 @@ public class PlayerMovement : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - new Vector3(0,boxSizeY-1,0), new Vector2(boxSizeX,boxSizeY));
+    }
+
+    public void Log()
+    {
+        Debug.Log(gameObject.name);
     }
 }
