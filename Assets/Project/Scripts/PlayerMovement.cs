@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private PlayerAnimation playerAnim;
     public InputActionAsset InputActions;
     private InputAction MoveAction;   
     private InputAction JumpAction;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float boxSizeY=1f;
     public float castDist=1f;
     private bool isRecoiled=false;
+    private bool isGrounded;
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
@@ -35,12 +37,20 @@ public class PlayerMovement : MonoBehaviour
         Flip();
         if(isRecoiled) return;
         rb.linearVelocityX = walkSpeed * MoveAction.ReadValue<float>();
+        playerAnim.SetMovementSpeed(Mathf.Abs(MoveAction.ReadValue<float>()));
     }
 
     void JumpCheck()
     {
         RaycastHit2D touched = Physics2D.BoxCast(transform.position - new Vector3(0,boxSizeY-1,0),new Vector2(boxSizeX,boxSizeY),0f,Vector2.zero,castDist,groundLayer);
-        if(JumpAction.ReadValue<float>() != 0 && touched.collider!=null) rb.linearVelocityY = jumpForce;
+        if(touched.collider!=null) isGrounded=true;
+        else isGrounded=false;
+        playerAnim.SetGrounded(isGrounded);
+        if(JumpAction.ReadValue<float>() != 0 && isGrounded)
+        {
+            rb.linearVelocityY = jumpForce;
+            playerAnim.SetJump();
+        }
     }
     public void Recoil()
     {
