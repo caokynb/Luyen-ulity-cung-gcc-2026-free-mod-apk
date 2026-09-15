@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public InputActionAsset InputActions;
     private InputAction MoveAction;   
     private InputAction JumpAction;
-    private InputAction SwapAction;
     public float walkSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance=1f;
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveAction = InputSystem.actions.FindAction("Move");
         JumpAction = InputSystem.actions.FindAction("Jump");
-        SwapAction = InputSystem.actions.FindAction("SwapPlayer");
     }
     void Update()
     {   

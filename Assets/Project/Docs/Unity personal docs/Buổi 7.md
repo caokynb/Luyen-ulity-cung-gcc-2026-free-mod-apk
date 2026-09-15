@@ -73,3 +73,51 @@
 - Là cái này: (Vòng triệu hồi SatungCL), em hiểu nó là gì mà... vừa dùng xong ở trên....
 ![[Pasted image 20260914164244.png]]
 ## 6. Finite State Machine
+- Là một mô hình tư duy và kiến trúc lập trình được sử dụng để thiết kế các hệ thống có thể **tồn tại ở một thời điểm chỉ trong MỘT trạng thái duy nhất**, và có thể chuyển đổi qua lại giữa các trạng thái đó dựa trên các điều kiện cụ thể... 
+- Khác với Blend Tree ở chỗ là đây là sẽ xây dựng một AI thay vì Animation như Blend Tree. Thật ra Blend Tree cũng là một dạng FSM.
+- Cấu trúc cốt lõi của một FSM 2 trạng thái:
+	``` C#
+	using UnityEngine;
+
+	public class SimpleFSM : MonoBehaviour
+	{
+    // 1. Định nghĩa các trạng thái có thể có
+    private enum State { Idle, Run }
+    private State currentState;
+    void Start()
+    {
+        // Đặt trạng thái ban đầu khi game chạy
+        currentState = State.Idle;
+    }
+    void Update()
+    {
+        // 2. Phân chia logic xử lý riêng cho từng trạng thái mỗi khung hình
+        switch (currentState)
+        {
+            case State.Idle:
+                Debug.Log("Đang đứng yên...");
+                // Điều kiện chuyển sang Run
+                if (Input.GetAxis("Horizontal") != 0)
+                {
+                    ChangeState(State.Run);
+                }
+                break;
+            case State.Run:
+                // --- Xử lý khi đang chạy ---
+                Debug.Log("Đang chạy...");
+                // Điều kiện chuyển về Idle
+                if (Input.GetAxis("Horizontal") == 0)
+                {
+                    ChangeState(State.Idle);
+                }
+                break;
+        }
+    }
+
+    // 3. Hàm chuyển đổi trạng thái chung
+    void ChangeState(State newState)
+    {
+        currentState = newState;
+    }
+}
+	```

@@ -47,7 +47,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "SwapPlayer",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "36059a04-9da1-46bc-b69d-ff6a0c343851",
                     "expectedControlType": "",
@@ -131,7 +131,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwapPlayer",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
