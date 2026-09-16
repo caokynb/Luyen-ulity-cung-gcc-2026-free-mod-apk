@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Bullet : MonoBehaviour
     public int bulletDamage=1;
     public Rigidbody2D rb;
     private Transform playerTransform;
+    public UnityEvent<int> onEnemyTouch;
     void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -17,6 +19,9 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log($"Đạn trúng: {collision.gameObject.name}");
         Destroy(this.gameObject);
-        //this.gameObject.SetActive(false);
+        if (collision.CompareTag("Enemy"))
+        {
+            onEnemyTouch?.Invoke(bulletDamage);
+        }
     }
 }
