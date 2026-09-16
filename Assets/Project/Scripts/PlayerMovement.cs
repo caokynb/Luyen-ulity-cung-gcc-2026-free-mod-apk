@@ -44,10 +44,11 @@ public class PlayerMovement : MonoBehaviour
         if(touched.collider!=null) isGrounded=true;
         else isGrounded=false;
         playerAnim.SetGrounded(isGrounded);
+        playerAnim.SetVelY(rb.linearVelocityY);
         if(JumpAction.ReadValue<float>() != 0 && isGrounded)
         {
             rb.linearVelocityY = jumpForce;
-            playerAnim.SetJump();
+            
         }
     }
     public void Recoil()

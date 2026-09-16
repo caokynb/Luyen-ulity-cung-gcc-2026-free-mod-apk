@@ -7,12 +7,12 @@ public class PlayerAnimation : MonoBehaviour
     {
         anim.SetFloat("Speed", speed);
     }
-    public void SetJump()
-    {
-        anim.SetTrigger("Jump");
-    }
     public void SetGrounded(bool isGrounded)
     {
         anim.SetBool("Grounded", isGrounded);
+    }
+    public void SetVelY(float speedY)
+    {
+        anim.SetFloat("SpeedVertical", speedY);
     }
 }
