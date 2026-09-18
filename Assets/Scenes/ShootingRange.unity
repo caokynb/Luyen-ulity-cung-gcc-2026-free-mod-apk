@@ -332,7 +332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &360271369
 Transform:
   m_ObjectHideFlags: 0
@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 759183906}
   - component: {fileID: 759183907}
   - component: {fileID: 759183908}
+  - component: {fileID: 759183909}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -926,6 +927,7 @@ MonoBehaviour:
   boxSizeX: 0.9
   boxSizeY: 1.05
   castDist: 1
+  isAttacking: 0
 --- !u!212 &759183904
 SpriteRenderer:
   serializedVersion: 3
@@ -1079,6 +1081,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   anim: {fileID: 759183907}
+--- !u!114 &759183909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759183897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ff0207b6f2d5949909ea13909978d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  anim: {fileID: 759183908}
+  playerMove: {fileID: 759183903}
+  waitTime: 0.7
 --- !u!1 &1475289730
 GameObject:
   m_ObjectHideFlags: 0

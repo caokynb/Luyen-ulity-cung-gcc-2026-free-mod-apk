@@ -15,4 +15,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         anim.SetFloat("SpeedVertical", speedY);
     }
+    public void SetAttack(int combo)
+    {
+        anim.SetInteger("Combo", combo);
+    }
 }

@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float castDist=1f;
     private bool isRecoiled=false;
     private bool isGrounded;
+    public bool isAttacking=false;
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
@@ -34,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
         JumpCheck();
         Flip();
         if(isRecoiled) return;
-        rb.linearVelocityX = walkSpeed * MoveAction.ReadValue<float>();
+        if(!isAttacking) rb.linearVelocityX = walkSpeed * MoveAction.ReadValue<float>();
+        else rb.linearVelocityX = 0;
         playerAnim.SetMovementSpeed(Mathf.Abs(MoveAction.ReadValue<float>()));
     }
 
@@ -45,17 +47,15 @@ public class PlayerMovement : MonoBehaviour
         else isGrounded=false;
         playerAnim.SetGrounded(isGrounded);
         playerAnim.SetVelY(rb.linearVelocityY);
-        if(JumpAction.ReadValue<float>() != 0 && isGrounded)
+        if(JumpAction.ReadValue<float>() != 0 && isGrounded && !isAttacking)
         {
             rb.linearVelocityY = jumpForce;
-            
         }
     }
     public void Recoil()
     {
         StartCoroutine(RecoilRoutine());
     }
-
     void Flip()
     {
         Vector3 currentDir=transform.localScale;
