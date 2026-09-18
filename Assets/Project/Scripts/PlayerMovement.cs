@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnim.SetVelY(rb.linearVelocityY);
         if(JumpAction.ReadValue<float>() != 0 && isGrounded && !isAttacking)
         {
-            rb.linearVelocityY = jumpForce;
+            if(!isAttacking) rb.linearVelocityY = jumpForce;
         }
     }
     public void Recoil()
