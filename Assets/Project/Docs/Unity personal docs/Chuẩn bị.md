@@ -1,6 +1,10 @@
-## Animator Controller
-
-## Animator Component 
-## Animation Clip 
-## Blend Tree 
-## Finite State Machine
+- **I.** Đọc hiểu State Machine của anh
+- **II.** Sử dụng State Machine $\rightarrow$ quái $\rightarrow$
+    - đi tuần
+    - đuổi theo player
+- **III.** 4 nguyên tắc OOP $\rightarrow$
+    - Đóng gói $\rightarrow$ `public`, `protected`, `private`
+    - Kế thừa $\rightarrow$ `virtual`
+    - Đa hình $\rightarrow$ `override`
+    - Trừu tượng $\rightarrow$ `Interface`, `abstract class`
+- **IV.** Class và object là gì
