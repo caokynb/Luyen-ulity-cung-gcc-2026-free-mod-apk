@@ -26,7 +26,10 @@ public class Player : MonoBehaviour
     [field:SerializeField] public int hp {get; set;}
     [field:SerializeField] public float dashSpeed {get; private set;}
     [field:SerializeField] public float dashTime {get; private set;}
+    [field:SerializeField] public Vector2 knockbackVelocity {get; private set;}
 
+    public int attackCombo=0;
+    public bool waitForAttack=false;
     public bool isGrounded;
     public bool isFalling;
     public bool isAttacking;
@@ -82,8 +85,15 @@ public class Player : MonoBehaviour
         if(touched.collider!=null) isGrounded=true;
         else isGrounded=false;
     }
-   /* void OnDrawGizmos()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Gizmos.DrawWireCube(transform.position - new Vector3(0,boxSizeY-1,0), new Vector2(boxSizeX,boxSizeY));
-    }*/
+        if (collision.CompareTag("Hazard"))
+        {
+            StateMachine.ChangeState(HitState);
+        }
+    }
+    /* void OnDrawGizmos()
+     {
+         Gizmos.DrawWireCube(transform.position - new Vector3(0,boxSizeY-1,0), new Vector2(boxSizeX,boxSizeY));
+     }*/
 }

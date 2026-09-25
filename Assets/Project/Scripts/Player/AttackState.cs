@@ -1,27 +1,46 @@
 using UnityEngine;
-using System.Collections;
 public class AttackState : IState
 {
     private Player player;
-    private Coroutine attack=null;
-    private float waitTime = 0.7f;
-    float timer=0f;
+    private float timer=0f;
+    private float waitTime=0.5f;
     public AttackState(Player player)
     {
         this.player = player;
     }
     public void Enter()
     {
-        player.isAttacking=true;
-        player.rb.linearVelocity=Vector2.zero;
         timer=0f;
-        waitTime=0.7f;
-        player.anim.SetInteger("Combo",1);
+        waitTime=0.5f;
+        player.waitForAttack=false;
+        player.isAttacking=true;
+        player.attackCombo=1;
+        player.anim.SetBool("Attack",player.isAttacking);
+        player.anim.SetInteger("Combo",player.attackCombo);
+        player.rb.linearVelocity=Vector2.zero;
     }
     public void Tick()
     {
-        if(attack==null){
-            attack=player.StartCoroutine(StartAttack());
+        if(player.waitForAttack)
+        {
+            player.anim.SetBool("Attack",player.isAttacking);
+            if (timer <= waitTime)
+            {
+                if (player.AttackAction.WasPressedThisFrame())
+                {
+                    //Debug.Log("Đã đánh đòn 2");
+                    player.attackCombo=2;
+                    player.isAttacking=true;
+                }
+            } else
+            {
+                if (player.attackCombo == 2)
+                {
+                    player.anim.SetBool("Attack",player.isAttacking);
+                    player.anim.SetInteger("Combo",player.attackCombo);
+                } else player.StateMachine.ChangeState(player.GroundState);
+            }
+            timer+=Time.deltaTime;
         }
     }
     public void FixedTick()
@@ -31,30 +50,9 @@ public class AttackState : IState
     public void Exit()
     {
         player.isAttacking=false;
-        attack=null;
-    }
-    private IEnumerator StartAttack()
-    {
-        yield return null;
-        Debug.Log("Đấm 1!");
-        bool pressed=false;
-        while (timer <= waitTime)
-        {
-            if (player.AttackAction.WasPressedThisFrame() && timer>=waitTime/2)
-            {
-                pressed=true;
-            }
-            timer+=Time.deltaTime;
-            yield return null;
-        }
-        if(pressed){
-            player.anim.SetInteger("Combo",2); 
-            Debug.Log("Đấm 2!");
-            yield return new WaitForSeconds(waitTime-0.45f);
-        } 
-        player.anim.SetInteger("Combo",0);
-        yield return null;
-        player.StateMachine.ChangeState(player.GroundState);
+        player.anim.SetBool("Attack",player.isAttacking);
+        player.attackCombo=0;
+        player.anim.SetInteger("Combo",player.attackCombo);
     }
 
 }
