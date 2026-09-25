@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    public StateMachineZombie StateMachine {get; private set;}
+    public StateMachine StateMachine {get; private set;}
     [field:SerializeField] public Animator anim {get; private set;}
     [field:SerializeField] public Rigidbody2D rb {get; private set;}
     [field:SerializeField] public BoxCollider2D cd {get; private set;}
@@ -13,13 +13,14 @@ public class Zombie : MonoBehaviour
     public FollowState FollowState {get; private set;}
     [field:SerializeField] public PlayerMovement player {get; private set;}
     [field:SerializeField] public float walkSpeed {get; private set;}
-    [field:SerializeField] public float walkTime {get; private set;}
+    [field:SerializeField] public float maxWalkTime {get; private set;}
     private void Awake()
     {
-        StateMachine = new StateMachineZombie();
+        StateMachine = new StateMachine();
         IdleState = new IdleStateZombie(this);
         SearchingState = new SearchingState(this);
         FollowState = new FollowState(this);
+        maxWalkTime=Random.Range(maxWalkTime-4,maxWalkTime);
     }
 
     private void Start()

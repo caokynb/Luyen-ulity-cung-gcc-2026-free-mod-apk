@@ -20,7 +20,7 @@ public class FollowState : IState
     {   
         if(zombie.player.transform.position.x>zombie.transform.position.x) dir=1;
         else dir=-1;     
-        zombie.rb.linearVelocityX=zombie.walkSpeed*dir;
+        zombie.rb.linearVelocityX=zombie.walkSpeed*1.05f*dir;
     }
 
     public void FixedTick()

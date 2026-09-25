@@ -20,7 +20,7 @@ public class SearchingState : IState
     public void Tick()
     {        
         zombie.rb.linearVelocityX=zombie.walkSpeed*dir[choose];
-        if(timer>=zombie.walkTime) 
+        if(timer>=zombie.maxWalkTime) 
         {
             zombie.StateMachine.ChangeState(zombie.IdleState);
             return;

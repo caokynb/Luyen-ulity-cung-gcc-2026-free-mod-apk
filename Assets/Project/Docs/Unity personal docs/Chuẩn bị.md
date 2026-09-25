@@ -2,7 +2,8 @@
 - **II.** Sử dụng State Machine $\rightarrow$ quái $\rightarrow$
     - đi tuần
     - đuổi theo player
-- **III.** 4 nguyên tắc OOP $\rightarrow$
+
+- **III.** 4 nguyên tắc OOP $\rightarrow$ (Khóa sau)
     - Đóng gói $\rightarrow$ `public`, `protected`, `private`
     - Kế thừa $\rightarrow$ `virtual`
     - Đa hình $\rightarrow$ `override`
