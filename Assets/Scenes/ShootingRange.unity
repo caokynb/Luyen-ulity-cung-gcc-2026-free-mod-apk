@@ -419,10 +419,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &50478532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,10 +440,14 @@ MonoBehaviour:
   <cd>k__BackingField: {fileID: 50478529}
   <InputActions>k__BackingField: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   <walkSpeed>k__BackingField: 5
-  <jumpHeight>k__BackingField: 5
+  <jumpForce>k__BackingField: 5
   <attackDamage>k__BackingField: 0
   <hp>k__BackingField: 1
+  <dashSpeed>k__BackingField: 10
+  <dashTime>k__BackingField: 0.25
   isGrounded: 0
+  isFalling: 0
+  isAttacking: 0
   boxSizeX: 0.9
   boxSizeY: 1.08
   castDist: 0.94
