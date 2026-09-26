@@ -443,7 +443,7 @@ MonoBehaviour:
   <walkSpeed>k__BackingField: 5
   <jumpForce>k__BackingField: 8
   <attackDamage>k__BackingField: 0
-  <hp>k__BackingField: 1
+  <hp>k__BackingField: 3
   <dashSpeed>k__BackingField: 20
   <dashTime>k__BackingField: 0.25
   <knockbackVelocity>k__BackingField: {x: 5, y: 2}
@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 491617949}
   - component: {fileID: 491617948}
   - component: {fileID: 491617950}
+  - component: {fileID: 491617951}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -922,6 +923,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackEvent
   player: {fileID: 50478532}
+--- !u!114 &491617951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491617946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a214572c8636c42bda3006c5668a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathEvent
 --- !u!1 &543621722
 GameObject:
   m_ObjectHideFlags: 0

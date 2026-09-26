@@ -8,7 +8,8 @@ public class DeathState : IState
     }
     public void Enter()
     {
-        
+        player.rb.linearVelocityX=0;
+        player.anim.SetTrigger("Death");
     }
     public void Tick()
     {

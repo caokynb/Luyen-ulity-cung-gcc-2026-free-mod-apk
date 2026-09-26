@@ -14,8 +14,9 @@ public class HitState : IState
         timer=0f;
         iFrame=0.2f;
         player.anim.SetBool("Hit",true);
-        player.rb.linearVelocity=new Vector2(player.knockbackVelocity.x*player.transform.localScale.x*-1f,player.knockbackVelocity.y);
         player.hp--;
+        if(player.hp>0) player.rb.linearVelocity=new Vector2(player.knockbackVelocity.x*player.transform.localScale.x*-1f,player.knockbackVelocity.y);
+        else player.StateMachine.ChangeState(player.DeathState);
     }
     public void Tick()
     {
